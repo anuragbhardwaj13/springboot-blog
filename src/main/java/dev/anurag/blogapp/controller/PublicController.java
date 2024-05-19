@@ -18,6 +18,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/public")
+@RequestMapping("/api/public")
 public class PublicController {
     @Autowired
     AuthenticationManager authenticationManager;
@@ -55,9 +56,15 @@ public class PublicController {
 
     @PostMapping("/signin")
     public ResponseEntity<?> signin( @RequestBody SignInRequest signInRequest) {
-
+        UserDetails details;
+        if (signInRequest.getIdentifier().contains("@")) {
+            // Assuming userService has a method to load user by email
+            details = userService.loadUserByEmail(signInRequest.getIdentifier());
+        } else {
+            details = userService.loadUserByUsername(signInRequest.getIdentifier());
+        }
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(signInRequest.getUsername(), signInRequest.getPassword()));
+                new UsernamePasswordAuthenticationToken(details.getUsername(), signInRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
