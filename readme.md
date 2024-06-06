@@ -17,7 +17,7 @@ Add following as Program Arguments / Environment Secrets
 
 **Request:**
 ```
-GET https://springboot-blog-uuan.onrender.com/api/public/health
+GET http://34.93.207.250/api/public/health
 ```
 
 ---
@@ -32,7 +32,7 @@ GET https://springboot-blog-uuan.onrender.com/api/public/health
 
 **Request:**
 ```
-POST https://springboot-blog-uuan.onrender.com/api/public/signup
+POST http://34.93.207.250/api/public/signup
 Content-Type: application/json
 
 {
@@ -57,7 +57,7 @@ Content-Type: application/json
 
 **Request:**
 ```
-POST https://springboot-blog-uuan.onrender.com/api/public/signin
+POST http://34.93.207.250/api/public/signin
 Content-Type: application/json
 
 {
@@ -88,7 +88,7 @@ Content-Type: application/json
 
 **Request:**
 ```
-GET https://springboot-blog-uuan.onrender.com/api/post
+GET http://34.93.207.250/api/post
 Authorization: Bearer <your_token>
 ```
 
@@ -104,7 +104,7 @@ Authorization: Bearer <your_token>
 
 **Request:**
 ```
-POST https://springboot-blog-uuan.onrender.com/api/post
+POST http://34.93.207.250/api/post
 Authorization: Bearer <your_token>
 Content-Type: application/json
 
@@ -128,7 +128,7 @@ Content-Type: application/json
 
 **Request:**
 ```
-GET https://springboot-blog-uuan.onrender.com/api/post/all
+GET http://34.93.207.250/api/post/all
 Authorization: Bearer <your_token>
 ```
 
@@ -146,7 +146,7 @@ Authorization: Bearer <your_token>
 
 **Request:**
 ```
-POST https://springboot-blog-uuan.onrender.com/api/post/approve/{id}
+POST http://34.93.207.250/api/post/approve/{id}
 Authorization: Bearer <your_token>
 ```
 
